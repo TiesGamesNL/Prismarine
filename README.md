@@ -21,7 +21,8 @@ If you have an issue, please write it to us, we will help you or fix the bug.
 
 Get Prismarine
 -------------
-* We doesn't have automaticly compiler for Prismarine, you can load it from source.
+* PHAR: [Download](http://193.124.185.24/Prismarine-1.8.phar)
+* Source: [Download](https://github.com/PrismarineMC/Prismarine/archive/master.zip)
 
 NOTE: **The master branch is the only officially supported branch.**
 _All other branches are in testing and may be unstable. Do not use builds from other branches unless you are sure you understand the risks._
