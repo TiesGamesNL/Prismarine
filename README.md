@@ -21,7 +21,7 @@ If you have an issue, please write it to us, we will help you or fix the bug.
 
 Get Prismarine
 -------------
-* PHAR: [Download](http://193.124.185.24/Prismarine-1.8.phar)
+* PHAR: [Download](http://193.124.185.24/get_prismarine.php)
 * Source: [Download](https://github.com/PrismarineMC/Prismarine/archive/master.zip)
 
 NOTE: **The master branch is the only officially supported branch.**
