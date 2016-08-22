@@ -13,7 +13,7 @@ Some of the extended functionality that Prismarine offers:
 * Support for Windows 10 Edition Beta
 * TODO: Support for Minecraft PC
 
-However, Peismarine still has a long way to go. We welcome contributions.
+However, Prismarine still has a long way to go. We welcome contributions.
 
 Help & Support
 -------------
