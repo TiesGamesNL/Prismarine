@@ -1,23 +1,23 @@
 <?php
 
-/*
+/**
  *
- *  ____            _        _   __  __ _                  __  __ ____
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
- * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
+ *  ____       _                          _
+ * |  _ \ _ __(_)___ _ __ ___   __ _ _ __(_)_ __   ___
+ * | |_) | '__| / __| '_ ` _ \ / _` | '__| | '_ \ / _ \
+ * |  __/| |  | \__ \ | | | | | (_| | |  | | | | |  __/
+ * |_|   |_|  |_|___/_| |_| |_|\__,_|_|  |_|_| |_|\___|
  *
- * This program is free software: you can redistribute it and/or modify
+ * Prismarine is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * @author PocketMine Team
- * @link http://www.pocketmine.net/
+ * @author Prismarine Team
+ * @link   https://github.com/PrismarineMC/Prismarine
  *
  *
-*/
+ */
 
 namespace pocketmine\inventory;
 
@@ -94,12 +94,16 @@ class PlayerInventory extends BaseInventory{
 	}
 
 	/**
-	 * @deprecated
+	 * @param int $index
+	 * @param int $slot
 	 *
-	 * Changes the linkage of the specified hotbar slot. This should never be done unless it is requested by the client.
+	 * Move item to hotbar slot. Compatible with old method
 	 */
 	public function setHotbarSlotIndex($index, $slot){
-		trigger_error("Do not attempt to change hotbar links in plugins!", E_USER_DEPRECATED);
+		$i1 = $this->getItem($index);
+		$i2 = $this->getItem($slot);
+		$this->setItem($index, $i2);
+		$this->setItem($slot, $i1);
 	}
 
 	/**
@@ -208,10 +212,10 @@ class PlayerInventory extends BaseInventory{
 	}
 
 	/**
-	 * @deprecated
 	 * @param int $slot
 	 */
 	public function setHeldItemSlot($slot){
+		$this->setHotbarSlotIndex($this->getHeldItemSlot(), $slot);
 	}
 
 	/**
@@ -331,7 +335,7 @@ class PlayerInventory extends BaseInventory{
 		}
 
 
-		$old = $this->getItem($index);
+		$old = clone $this->getItem($index);
 		$this->slots[$index] = clone $item;
 		$this->onSlotChange($index, $old, $send);
 

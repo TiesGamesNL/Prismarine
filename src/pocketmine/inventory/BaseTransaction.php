@@ -1,26 +1,27 @@
 <?php
 
-/*
+/**
  *
- *  ____            _        _   __  __ _                  __  __ ____
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
- * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
+ *  ____       _                          _
+ * |  _ \ _ __(_)___ _ __ ___   __ _ _ __(_)_ __   ___
+ * | |_) | '__| / __| '_ ` _ \ / _` | '__| | '_ \ / _ \
+ * |  __/| |  | \__ \ | | | | | (_| | |  | | | | |  __/
+ * |_|   |_|  |_|___/_| |_| |_|\__,_|_|  |_|_| |_|\___|
  *
- * This program is free software: you can redistribute it and/or modify
+ * Prismarine is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * @author PocketMine Team
- * @link http://www.pocketmine.net/
+ * @author Prismarine Team
+ * @link   https://github.com/PrismarineMC/Prismarine
  *
  *
-*/
+ */
 
 namespace pocketmine\inventory;
 
+use pocketmine\event\inventory\InventoryClickEvent;
 use pocketmine\item\Item;
 use pocketmine\Player;
 
@@ -188,6 +189,12 @@ class BaseTransaction implements Transaction{
 	 */
 
 	public function execute(Player $source): bool{
+		if($this->getInventory() instanceof ContainerInventory || $this->getInventory() instanceof PlayerInventory){
+			$source->getServer()->getPluginManager()->callEvent($ev = new InventoryClickEvent($this->getInventory(), $source, $this->getSlot(), $this->getInventory()->getItem($this->getSlot())));
+			if($ev->isCancelled()){
+				return true;
+			}
+		}
 		if($this->getInventory()->processSlotChange($this)){ //This means that the transaction should be handled the normal way
 			if(!$source->getServer()->allowInventoryCheats and !$source->isCreative()){
 				$change = $this->getChange();

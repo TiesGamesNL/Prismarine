@@ -1878,7 +1878,7 @@ class Server{
 
 			$onlineMode = $this->getConfigBoolean("online-mode", false);
 			if(!extension_loaded("openssl")){
-				$this->logger->warning("The OpenSSL extension is not loaded, and this is required for XBOX authentication to work. If you want to use Xbox Live auth, please update your PHP binaries at itxtech.org/download, or recompile PHP with the OpenSSL extension.");
+				$this->logger->warning("The OpenSSL extension is not loaded, and this is required for XBOX authentication to work. If you want to use Xbox Live auth, please recompile PHP with the OpenSSL extension or wait for alternative.");
 				$this->setConfigBool("online-mode", false);
 			}elseif(!$onlineMode){
 				$this->logger->warning("SERVER IS RUNNING IN OFFLINE/INSECURE MODE!");

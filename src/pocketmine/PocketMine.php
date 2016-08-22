@@ -1,23 +1,23 @@
 <?php
 
-/*
+/**
  *
- *  ____            _        _   __  __ _                  __  __ ____
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
- * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
+ *  ____       _                          _
+ * |  _ \ _ __(_)___ _ __ ___   __ _ _ __(_)_ __   ___
+ * | |_) | '__| / __| '_ ` _ \ / _` | '__| | '_ \ / _ \
+ * |  __/| |  | \__ \ | | | | | (_| | |  | | | | |  __/
+ * |_|   |_|  |_|___/_| |_| |_|\__,_|_|  |_|_| |_|\___|
  *
- * This program is free software: you can redistribute it and/or modify
+ * Prismarine is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * @author PocketMine Team
- * @link http://www.pocketmine.net/
+ * @author Prismarine Team
+ * @link   https://github.com/PrismarineMC/Prismarine
  *
  *
-*/
+ */
 
 namespace {
 	function safe_var_dump(){
@@ -65,12 +65,41 @@ namespace {
 }
 
 namespace pocketmine {
+	use pocketmine\inventory\WindowInventory;
 	use pocketmine\utils\Binary;
 	use pocketmine\utils\MainLogger;
 	use pocketmine\utils\ServerKiller;
 	use pocketmine\utils\Terminal;
 	use pocketmine\utils\Utils;
 	use pocketmine\wizard\Installer;
+
+	abstract class PocketMine {
+
+		public static function createInventory(){
+			return new WindowInventory();
+		}
+
+		public static function getServer(){
+			return Server::getInstance();
+		}
+
+		public static function getLevels(){
+			return Server::getInstance()->getLevels();
+		}
+
+		public static function getScheduler(){
+			return Server::getInstance()->getScheduler();
+		}
+
+		public static function getDefaultLevel(){
+			return Server::getInstance()->getDefaultLevel();
+		}
+
+		public static function getPluginManager(){
+			return Server::getInstance()->getPluginManager();
+		}
+
+	}
 
 	const VERSION = "1.8";
 	const API_VERSION = "2.0.0";
