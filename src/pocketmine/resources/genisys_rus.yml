@@ -1,0 +1,170 @@
+#Дополнительные настройки Genisys
+
+#Версия файла
+config:
+ version: 18
+
+level:
+ #Включение погоды
+ weather: true
+ #Случайная длительность дождя
+ weather-random-duration-min: 6000
+ weather-random-duration-max: 12000
+ #Случайный интервал грозы, по умолчанию 10 секунд, 0 чтобы отключить
+ lightning-time: 200
+ #Включение огня при грозе
+ lightning-fire: false
+ #Включение распространение огня
+ fire-spread: false
+ 
+player:
+ #Включение системы голода
+ hunger: true
+ #Минимальное здоровье, когда кто-то умирает от голода
+ hunger-health: 10
+ #Счетчик голода, по умолчанию: 80=4сек
+ hunger-timer: 3000
+ #Включение системы опыта
+ experience: true
+ #Включение дропа вещей
+ keep-inventory: false
+ #Очищение инвентаря при смене режима игры
+ auto-clear-inventory : true
+ #Включение дропа опыта
+ keep-experience: false
+ #Если игроки вылетают при заходе, поставьте ниже десяти, -1 выключить
+ chunk-radius: -1
+
+nether:
+ #Включение ада, мир ада сгенерируется автоматически
+ allow-nether: true
+ #Название мира ада
+ level-name: "nether"
+ 
+server:
+ #Прегенерированные данные опыта, 0=выключить
+ experience-cache: 65535
+ #Позволяет создавать железного голема
+ allow-iron-golem: false
+ #Позволяет создавать снеговика
+ allow-snow-golem: false
+ #Выключение server.log(экономия места)
+ disable-log: false
+ #Включение анти-флая
+ anti-fly: true
+ #Валючение асихронного запроса чанков
+ async-chunk-request: true
+ #Выбор, где выводить сообщения о заходе игрока
+ #0 = Чат, 1 = По центру экрана, 2 = Над хотбаром
+ player-msg-type: 0
+ login-msg: "§e@player joined the game"
+ logout-msg: "§e@player left the game"
+ #Включение чтения рецептов крафта из json файла
+ recipes-from-json: false
+ #Включение чтения предметов в креативе из json фафла
+ creative-items-from-json: false
+ #Выбор типа движения вагонетки
+ #-1=выключить, 0=свободное, 1=по рельсам
+ minecart-moving-type: 0
+ #Включение проверки движения(анти-чит)
+ check-movement: true
+ #Включение ограниченного творческого режима(как в старых версиях MCPE)
+ limited-creative: true
+ #Включение эффекта ломания блока
+ destroy-block-particle: true
+ #Включение взрывных зелий
+ allow-splash-potion: true
+ #Включение расширенного Command Selector
+ advanced-command-selector: false
+
+enchantment:
+ #Включение наковальни
+ enable-anvil: true
+ #Включение зачаровальри
+ enable-enchanting-table: true
+ #Включение счетчика книжных полок(может лагать сервер)
+ #Если выключено, сервер будет использовать рандомное кол-во(0~15)
+ count-bookshelf: false
+
+redstone:
+ ##########################################
+ ###Включение системы красного камня###
+ ##########################################
+ #Если выключено, красный камень не будет работать#
+ ##########################################
+ enable: false
+ #Включение частоты импульса
+ frequency-pulse: false
+ #Частота импульса, по умолчанию: 1сек
+ pulse-frequency: 1
+
+synapse:
+ #Включение подключения к Synapse серверу
+ enabled: false
+ server-ip: 127.0.0.1
+ server-port: 10305
+ #Включить, если этот сервер главный(хаб/.
+ is-main-server: true
+ server-password: 16bitlongkey
+ #Описание - идентификатор сервера
+ description: "A Synapse client"
+ #Запретить заход без Synapse
+ disable-rak: false
+
+dserver:
+ #Включение query по нескольким серверам
+ enable: false
+ #Автоматическое обновление query
+ query-auto-update: false
+ #Переодическое обновление query
+ query-tick-update: true
+ #Максимальное кол-во игроков
+ motd-max-players: 0
+ #Максимальное кол-во игроков в query
+ query-max-players: 0
+ #Показывать всех игроков в motd
+ motd-all-players: false
+ #Показывать всех игроков в query
+ query-all-players: false
+ #Показывать кол-во онлайн игроков в motd
+ motd-players: false
+ #Показывать кол-во онлайн игроков в queru
+ query-players: false
+ #Частота обновления, 20=1сек
+ time: 40
+ #Количество попытоа, при ошибке
+ retry-times: 3
+ #Список серверов, разделать через ; Пример: 1.example.com:19132;2.example.com:19133
+ server-list: ""
+ 
+ai:
+ #Интеллект мобам
+ enable: false
+ #Zombie'AI，0=выключено，1=AI 1.0 версия，2=новый AI(Баги)
+ zombie: 1
+ #PigZombie's AI
+ pigzombie: true
+ #the AI of cow and mushroom cow
+ cow: true
+ #Chicken's AI
+ chicken: true
+ #Sheep's AI
+ sheep: true
+ #Pigs' AI
+ pig: true
+ #Skeleton's AI
+ skeleton: true
+ #Creeper's AI
+ creeper: true
+ #Iron golem's AI
+ iron-golem: true
+ #Snow golem's AI
+ snow-golem: true
+ #Взрыв блоков при взрыве крипера
+ creeper-explode-destroy-block: false
+ #Авто генерация мобов
+ mobgenerate: false
+ 
+inventory:
+ #Анти-чит с инвентарем
+ allow-cheats: false
