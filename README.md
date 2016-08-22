@@ -5,7 +5,7 @@ __Feature-rich server software for Minecraft: Pocket Edition & Windows 10 Editio
 
 Introduction
 -------------
-Prismarine is a fork of **[Genisys](https://github.com/iTXTech/Genisys)** and most of the original code was written by **PocketMine Team** and **iTX Technologies***.<br>
+Prismarine is a fork of **[Genisys](https://github.com/iTXTech/Genisys)** and most of the original code was written by **PocketMine Team** and **iTX Technologies**.<br>
 Some of the extended functionality that Prismarine offers:
 
 * Synapse Client support
