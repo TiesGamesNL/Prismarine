@@ -36,15 +36,13 @@ use pocketmine\inventory\InventoryHolder;
 
 class WindowInventory extends CustomInventory{
 
-    protected $holders = [];
-
     public function __construct() {
         $holder = new WindowHolder(0, 0, 0, $this);
         parent::__construct($holder, InventoryType::get(InventoryType::CHEST));
     }
 
     public function onOpen(Player $who){
-        $this->holders[spl_object_hash($who)] = $holder = new Vector3($who->getFloorX(), $who->getFloorY() - 3, $who->getFloorZ());
+        $this->holder = $holder = new WindowHolder($who->getFloorX(), $who->getFloorY() - 3, $who->getFloorZ(), $this);
         $pk = new UpdateBlockPacket();
         $pk->x = $holder->x;
         $pk->y = $holder->y;
@@ -72,8 +70,7 @@ class WindowInventory extends CustomInventory{
     }
 
     public function onClose(Player $who){
-        $holder = clone $this->holders[spl_object_hash($who)];
-        unset($this->holders[spl_object_hash($who)]);
+        $holder = $this->holder;
         $pk = new UpdateBlockPacket();
         $pk->x = $holder->x;
         $pk->y = $holder->y;
