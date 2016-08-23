@@ -36,9 +36,9 @@ use pocketmine\inventory\InventoryHolder;
 
 class WindowInventory extends CustomInventory{
 
-    private $name = "";
-    private $tile;
-    private $block;
+    protected $name = "";
+    protected $tile;
+    protected $block;
 
     public function __construct(Player $player, $size = 27, $name = "") {
         $this->tile = Tile::CHEST;
