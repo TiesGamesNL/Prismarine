@@ -36,7 +36,6 @@ use pocketmine\inventory\InventoryHolder;
 
 class WindowInventory extends CustomInventory{
 
-    private $size = 27;
     private $name = "";
     private $tile;
     private $block;
