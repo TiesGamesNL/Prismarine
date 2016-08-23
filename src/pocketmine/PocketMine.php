@@ -65,41 +65,12 @@ namespace {
 }
 
 namespace pocketmine {
-	use pocketmine\inventory\WindowInventory;
 	use pocketmine\utils\Binary;
 	use pocketmine\utils\MainLogger;
 	use pocketmine\utils\ServerKiller;
 	use pocketmine\utils\Terminal;
 	use pocketmine\utils\Utils;
 	use pocketmine\wizard\Installer;
-
-	abstract class PocketMine {
-
-		public static function createInventory(Player $player, $size = 27, $name = ""){
-			return new WindowInventory($player, $size, $name);
-		}
-
-		public static function getServer(){
-			return Server::getInstance();
-		}
-
-		public static function getLevels(){
-			return Server::getInstance()->getLevels();
-		}
-
-		public static function getScheduler(){
-			return Server::getInstance()->getScheduler();
-		}
-
-		public static function getDefaultLevel(){
-			return Server::getInstance()->getDefaultLevel();
-		}
-
-		public static function getPluginManager(){
-			return Server::getInstance()->getPluginManager();
-		}
-
-	}
 
 	const VERSION = "1.8";
 	const API_VERSION = "2.0.0";

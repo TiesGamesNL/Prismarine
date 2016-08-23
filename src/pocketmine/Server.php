@@ -1,23 +1,23 @@
 <?php
 
-/*
+/**
  *
- *  ____            _        _   __  __ _                  __  __ ____
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
- * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
+ *  ____       _                          _
+ * |  _ \ _ __(_)___ _ __ ___   __ _ _ __(_)_ __   ___
+ * | |_) | '__| / __| '_ ` _ \ / _` | '__| | '_ \ / _ \
+ * |  __/| |  | \__ \ | | | | | (_| | |  | | | | |  __/
+ * |_|   |_|  |_|___/_| |_| |_|\__,_|_|  |_|_| |_|\___|
  *
- * This program is free software: you can redistribute it and/or modify
+ * Prismarine is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * @author PocketMine Team
- * @link http://www.pocketmine.net/
+ * @author Prismarine Team
+ * @link   https://github.com/PrismarineMC/Prismarine
  *
  *
-*/
+ */
 
 namespace pocketmine;
 
@@ -91,6 +91,7 @@ use pocketmine\inventory\InventoryType;
 use pocketmine\inventory\Recipe;
 use pocketmine\inventory\ShapedRecipe;
 use pocketmine\inventory\ShapelessRecipe;
+use pocketmine\inventory\WindowInventory;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentLevelTable;
 use pocketmine\item\Item;
@@ -1035,6 +1036,13 @@ class Server{
 				$this->logger->logException($e);
 			}
 		}
+	}
+
+	/**
+	 * @return WindowInventory
+	 */
+	public static function createInventory(Player $player, $size = 27, $name = ""){
+		return new WindowInventory($player, $size, $name);
 	}
 
 	/**
