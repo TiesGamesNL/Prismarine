@@ -27,42 +27,6 @@ namespace pocketmine\network\protocol;
 class LevelEventPacket extends DataPacket{
 	const NETWORK_ID = Info::LEVEL_EVENT_PACKET;
 
-    public static final int EVENT_SOUND_CLICK = 1000;
-    public static final int EVENT_SOUND_CLICK_FAIL = 1001;
-    public static final int EVENT_SOUND_SHOOT = 1002;
-    public static final int EVENT_SOUND_DOOR = 1003;
-    public static final int EVENT_SOUND_FIZZ = 1004;
-    public static final int EVENT_SOUND_TNT = 1005;
-
-    public static final int EVENT_SOUND_GHAST = 1007;
-    public static final int EVENT_SOUND_BLAZE_SHOOT = 1008;
-    public static final int EVENT_SOUND_GHAST_SHOOT = 1009;
-    public static final int EVENT_SOUND_DOOR_BUMP = 1010;
-    public static final int EVENT_SOUND_DOOR_CRASH = 1012;
-
-    public static final int EVENT_SOUND_BAT_FLY = 1015;
-    public static final int EVENT_SOUND_ZOMBIE_INFECT = 1016;
-    public static final int EVENT_SOUND_ZOMBIE_HEAL = 1017;
-    public static final int EVENT_SOUND_ENDERMAN_TELEPORT = 1018;
-
-    public static final int EVENT_SOUND_ANVIL_BREAK = 1020;
-    public static final int EVENT_SOUND_ANVIL_USE = 1021;
-    public static final int EVENT_SOUND_ANVIL_FALL = 1022;
-
-    public static final int EVENT_SOUND_ITEM_DROP = 1030;
-    public static final int EVENT_SOUND_ITEM_THROWN = 1031;
-
-    public static final int EVENT_SOUND_ITEM_FRAME_ITEM_ADDED = 1040;
-    public static final int EVENT_SOUND_ITEM_FRAME_PLACED = 1041;
-    public static final int EVENT_SOUND_ITEM_FRAME_REMOVED = 1042;
-    public static final int EVENT_SOUND_ITEM_FRAME_ITEM_REMOVED = 1043;
-    public static final int EVENT_SOUND_ITEM_FRAME_ITEM_ROTATED = 1044;
-
-    public static final int EVENT_SOUND_CAMERA_TAKE_PICTURE = 1050;
-    public static final int EVENT_SOUND_EXPERIENCE_ORB = 1051;
-
-    public static final int EVENT_SOUND_BUTTON_CLICK = 3500;
-
 	const EVENT_SOUND_CLICK = 1000;
 	const EVENT_SOUND_CLICK_FAIL = 1001;
 	const EVENT_SOUND_SHOOT = 1002;
