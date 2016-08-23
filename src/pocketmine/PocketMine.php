@@ -75,8 +75,8 @@ namespace pocketmine {
 
 	abstract class PocketMine {
 
-		public static function createInventory(){
-			return new WindowInventory();
+		public static function createInventory(Player $player, $size = 27, $name = ""){
+			return new WindowInventory($player, $size, $name);
 		}
 
 		public static function getServer(){

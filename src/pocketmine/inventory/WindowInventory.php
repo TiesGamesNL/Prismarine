@@ -36,9 +36,37 @@ use pocketmine\inventory\InventoryHolder;
 
 class WindowInventory extends CustomInventory{
 
-    public function __construct() {
-        $holder = new WindowHolder(0, 0, 0, $this);
-        parent::__construct($holder, InventoryType::get(InventoryType::CHEST));
+    private $size = 27;
+    private $name = "";
+    private $tile;
+    private $block;
+
+    public function __construct(Player $player, $size = 27, $name = "") {
+        $this->tile = Tile::CHEST;
+        $this->block = 54;
+        $type = InventoryType::get(InventoryType::CHEST);
+        switch($size){
+            case 5:
+                 $this->tile = Tile::HOPPER;
+                 $this->block = 154;
+                 $type = InventoryType::get(InventoryType::HOPPER);
+                 break;
+             case 9:
+                 $this->tile = Tile::DISPENSER;
+                 $this->block = 23;
+                 $type = InventoryType::get(InventoryType::DISPENSER);
+                 break;
+             case 27:
+                 $type = InventoryType::get(InventoryType::CHEST);
+             case 54:
+                 $type = InventoryType::get(InventoryType::DOUBLE_CHEST);
+                 $this->tile = Tile::CHEST;
+                 $this->block = 54;
+             default:
+                 $who->getServer()->getLogger()->notice("Unknown window size. If must be one from: 5, 9, 27, 54. Using default size(27).");
+        }
+        $holder = new WindowHolder($player->getFloorX(), $player->getFloorY() - 3, $player->getFloorZ(), $this);
+        parent::__construct($holder, $type);
     }
 
     public function onOpen(Player $who){
@@ -47,16 +75,19 @@ class WindowInventory extends CustomInventory{
         $pk->x = $holder->x;
         $pk->y = $holder->y;
         $pk->z = $holder->z;
-        $pk->blockId = 54;
+        $pk->blockId = $this->block;
         $pk->blockData = 0;
         $pk->flags = UpdateBlockPacket::FLAG_ALL;
         $who->dataPacket($pk);
         $c = new CompoundTag("", [
-            new StringTag("id", Tile::CHEST),
+            new StringTag("id", $this->tile),
             new IntTag("x", (int) $holder->x),
             new IntTag("y", (int) $holder->y),
             new IntTag("z", (int) $holder->z)
-         ]);
+        ]);
+        if($this->name !== ""){
+            $c->CustomName = new StringTag("CustomName", $this->name);
+        }
         $nbt = new NBT(NBT::LITTLE_ENDIAN);
         $nbt->setData($c);
         $pk = new BlockEntityDataPacket();
