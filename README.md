@@ -11,6 +11,7 @@ Some of the extended functionality that Prismarine offers:
 * Synapse Client support
 * Optional Xbox Live authentication
 * Support for Windows 10 Edition Beta
+* More like Bukkit API
 * TODO: Support for Minecraft PC
 
 However, Prismarine still has a long way to go. We welcome contributions.
