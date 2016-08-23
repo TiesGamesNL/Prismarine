@@ -108,7 +108,10 @@ class XPOrb extends Entity{
 						$this->close();
 
 						$this->getLevel()->getServer()->getPluginManager()->callEvent($ev = new PlayerPickupExpOrbEvent($expectedPos, $this->getExperience()));
-						if(!$ev->isCancelled()) $expectedPos->addExperience($this->getExperience());
+						if(!$ev->isCancelled()){
+							$expectedPos->addExperience($this->getExperience());
+							$expectedPos->getLevel()->addSound(new ExperienceOrbSound($this));
+						}
 					}
 				}
 			}
