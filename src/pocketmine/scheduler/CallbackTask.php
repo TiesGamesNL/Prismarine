@@ -43,7 +43,6 @@ class CallbackTask extends Task{
 	public function __construct(callable $callable, array $args = []){
 		$this->callable = $callable;
 		$this->args = $args;
-		$this->args[] = $this;
 	}
 
 	/**
@@ -54,7 +53,9 @@ class CallbackTask extends Task{
 	}
 
 	public function onRun($currentTicks){
-		call_user_func_array($this->callable, $this->args);
+		$c = $this->callable;
+		$args = $this->args;
+		$c(...$args);
 	}
 
 }
