@@ -339,8 +339,8 @@ class PlayerInventory extends BaseInventory{
 		$this->slots[$index] = clone $item;
 		$this->onSlotChange($index, $old, $send);
 
-		$this->sendContents($this->getHolder());
-		$this->sendArmorContents($this->getHolder());
+		$this->sendContents($this->getViewers());
+		$this->sendArmorContents($this->getViewers());
 
 		return true;
 	}
