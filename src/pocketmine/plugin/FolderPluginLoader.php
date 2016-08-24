@@ -1,4 +1,24 @@
 <?php
+
+/**
+ *
+ *  ____       _                          _
+ * |  _ \ _ __(_)___ _ __ ___   __ _ _ __(_)_ __   ___
+ * | |_) | '__| / __| '_ ` _ \ / _` | '__| | '_ \ / _ \
+ * |  __/| |  | \__ \ | | | | | (_| | |  | | | | |  __/
+ * |_|   |_|  |_|___/_| |_| |_|\__,_|_|  |_|_| |_|\___|
+ *
+ * Prismarine is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * @author Prismarine Team
+ * @link   https://github.com/PrismarineMC/Prismarine
+ *
+ *
+ */
+
 namespace pocketmine\plugin;
 
 use pocketmine\event\plugin\PluginDisableEvent;
@@ -33,7 +53,7 @@ class FolderPluginLoader implements PluginLoader{
 	public function loadPlugin($file){
 		if(is_dir($file) and file_exists($file . "/plugin.yml") and file_exists($file . "/src/")){
 			if(($description = $this->getPluginDescription($file)) instanceof PluginDescription){
-				MainLogger::getLogger()->info(TextFormat::LIGHT_PURPLE."Loading source plugin " . $description->getFullName());
+				MainLogger::getLogger()->info("Loading source plugin " . $description->getFullName());
 				$dataFolder = dirname($file) . DIRECTORY_SEPARATOR . $description->getName();
 				if(file_exists($dataFolder) and !is_dir($dataFolder)){
 					trigger_error("Projected dataFolder '" . $dataFolder . "' for " . $description->getName() . " exists and is not a directory", E_USER_WARNING);
