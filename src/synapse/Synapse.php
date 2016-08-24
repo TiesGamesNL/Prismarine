@@ -136,7 +136,7 @@ class Synapse{
 
 	public function tick(){
 		$this->interface->process();
-		if((($time = microtime(true)) - $this->lastUpdate) >= 5){//Heartbeat!
+		if((($time = microtime(true)) - $this->lastUpdate) >= 1){//Heartbeat!
 			$this->lastUpdate = $time;
 			$pk = new HeartbeatPacket();
 			$pk->tps = $this->server->getTicksPerSecondAverage();
@@ -144,10 +144,9 @@ class Synapse{
 			$pk->upTime = microtime(true) - \pocketmine\START_TIME;
 			$this->sendDataPacket($pk);
 		}
-		if(((($time = microtime(true)) - $this->lastUpdate) >= 30) and $this->interface->isConnected()){//30 seconds timeout
+		if(((($time = microtime(true)) - $this->lastUpdate) >= 15) and $this->interface->isConnected()){//30 seconds timeout
 			$this->interface->reconnect();
-		}
-		if(microtime(true) - $this->connectionTime >= 15 and !$this->verified){
+		} elseif(microtime(true) - $this->connectionTime >= 10 and !$this->verified){
 			$this->interface->reconnect();
 		}
 	}
