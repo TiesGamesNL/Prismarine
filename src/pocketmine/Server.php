@@ -1812,12 +1812,13 @@ class Server{
 
 			$this->about();
 
-			$this->logger->debug("Loading pocketmine.yml...");
 			if(!file_exists($this->dataPath . "pocketmine.yml")){
 				$content = file_get_contents($this->filePath . "src/pocketmine/resources/pocketmine.yml");
 				@file_put_contents($this->dataPath . "pocketmine.yml", $content);
 			}
 			$this->config = new Config($configPath = $this->dataPath . "pocketmine.yml", Config::YAML, []);
+			$this->logger->setLogDebug($this->getProperty("debug.level", 1) > 1);
+			$this->logger->debug("Loading pocketmine.yml...");
 			$nowLang = $this->getProperty("settings.language", "eng");
 
 			//Crashes unsupported builds without the correct configuration
@@ -1857,7 +1858,7 @@ class Server{
 				$this->generateExpCache($this->expWriteAhead);
 			}
 
-			$this->logger->info("Loading server properties...");
+			$this->logger->info("Loading server.properties...");
 			$this->properties = new Config($this->dataPath . "server.properties", Config::PROPERTIES, [
 				"motd" => "Minecraft: PE Server",
 				"server-port" => 19132,
