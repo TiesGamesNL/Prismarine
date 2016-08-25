@@ -57,6 +57,9 @@ class WindowInventory extends CustomInventory{
                  break;
              case 27:
                  $type = InventoryType::get(InventoryType::CHEST);
+                 $this->tile = Tile::CHEST;
+                 $this->block = 54;
+                 break;
              case 54:
                  $type = InventoryType::get(InventoryType::DOUBLE_CHEST);
                  $this->tile = Tile::CHEST;
