@@ -192,6 +192,7 @@ class BaseTransaction implements Transaction{
 		if($this->getInventory() instanceof ContainerInventory || $this->getInventory() instanceof PlayerInventory){
 			$source->getServer()->getPluginManager()->callEvent($ev = new InventoryClickEvent($this->getInventory(), $source, $this->getSlot(), $this->getInventory()->getItem($this->getSlot())));
 			if($ev->isCancelled()){
+				$this->sendSlotUpdate($source);
 				return true;
 			}
 		}
