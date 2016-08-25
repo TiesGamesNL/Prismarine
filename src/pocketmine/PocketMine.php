@@ -72,8 +72,8 @@ namespace pocketmine {
 	use pocketmine\utils\Utils;
 	use pocketmine\wizard\Installer;
 
-	const VERSION = "1.8";
-	const API_VERSION = "2.0.0";
+	const VERSION = "1.8.1";
+	const API_VERSION = "2.1.0";
 	const CODENAME = "Cake";
 	const MINECRAFT_VERSION = "v0.15.6 alpha";
 	const MINECRAFT_VERSION_NETWORK = "0.15.6";
