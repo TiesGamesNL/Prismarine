@@ -61,8 +61,9 @@ class WindowInventory extends CustomInventory{
                  $type = InventoryType::get(InventoryType::DOUBLE_CHEST);
                  $this->tile = Tile::CHEST;
                  $this->block = 54;
+                 break;
              default:
-                 $who->getServer()->getLogger()->notice("Unknown window size. If must be one from: 5, 9, 27, 54. Using default size(27).");
+                 $player->getServer()->getLogger()->notice("Unknown window size. If must be one from: 5, 9, 27, 54. Using default size(27).");
         }
         $holder = new WindowHolder($player->getFloorX(), $player->getFloorY() - 3, $player->getFloorZ(), $this);
         parent::__construct($holder, $type);
