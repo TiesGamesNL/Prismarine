@@ -21,7 +21,6 @@
 
 namespace pocketmine\inventory;
 
-use pocketmine\event\inventory\InventoryClickEvent;
 use pocketmine\item\Item;
 use pocketmine\Player;
 
@@ -189,13 +188,6 @@ class BaseTransaction implements Transaction{
 	 */
 
 	public function execute(Player $source): bool{
-		if($this->getInventory() instanceof ContainerInventory || $this->getInventory() instanceof PlayerInventory){
-			$source->getServer()->getPluginManager()->callEvent($ev = new InventoryClickEvent($this->getInventory(), $source, $this->getSlot(), $this->getInventory()->getItem($this->getSlot())));
-			if($ev->isCancelled()){
-				$this->sendSlotUpdate($source);
-				return true;
-			}
-		}
 		if($this->getInventory()->processSlotChange($this)){ //This means that the transaction should be handled the normal way
 			if(!$source->getServer()->allowInventoryCheats and !$source->isCreative()){
 				$change = $this->getChange();

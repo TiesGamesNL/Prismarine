@@ -21,6 +21,7 @@
 
 namespace pocketmine\inventory;
 
+use pocketmine\event\inventory\InventoryClickEvent;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\item\Item;
 use pocketmine\Player;
@@ -100,7 +101,9 @@ class SimpleTransactionQueue implements TransactionQueue{
 		while(!$this->transactionQueue->isEmpty()){
 			$transaction = $this->transactionQueue->dequeue();
 
-			if($ev->isCancelled()){
+			$this->player->getServer()->getPluginManager()->callEvent($event = new InventoryClickEvent($transaction->getInventory(), $this->player, $transaction->getSlot(), $transaction->getInventory()->getItem($transaction->getSlot())));
+
+			if($ev->isCancelled() || $event->isCancelled()){
 				$transaction->sendSlotUpdate($this->player); //Send update back to client for cancelled transaction
 				continue;
 			}elseif(!$transaction->execute($this->player)){
