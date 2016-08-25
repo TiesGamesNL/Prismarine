@@ -36,7 +36,7 @@ use pocketmine\inventory\InventoryHolder;
 
 class WindowInventory extends CustomInventory{
 
-    protected $name = "";
+    protected $customName = "";
     protected $tile;
     protected $block;
 
@@ -68,6 +68,7 @@ class WindowInventory extends CustomInventory{
              default:
                  $player->getServer()->getLogger()->notice("Unknown window size. If must be one from: 5, 9, 27, 54. Using default size(27).");
         }
+        $this->customName = $name;
         $holder = new WindowHolder($player->getFloorX(), $player->getFloorY() - 3, $player->getFloorZ(), $this);
         parent::__construct($holder, $type);
     }
@@ -89,7 +90,7 @@ class WindowInventory extends CustomInventory{
             new IntTag("z", (int) $holder->z)
         ]);
         if($this->name !== ""){
-            $c->CustomName = new StringTag("CustomName", $this->name);
+            $c->CustomName = new StringTag("CustomName", $this->customName);
         }
         $nbt = new NBT(NBT::LITTLE_ENDIAN);
         $nbt->setData($c);
