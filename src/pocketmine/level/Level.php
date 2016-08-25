@@ -114,6 +114,7 @@ use pocketmine\utils\Random;
 use pocketmine\utils\ReversePriorityQueue;
 use pocketmine\level\particle\Particle;
 use pocketmine\level\sound\Sound;
+use pocketmine\level\sound\BlockPlaceSound;
 use pocketmine\level\particle\DestroyBlockParticle;
 
 use pocketmine\level\generator\biome\Biome;
@@ -1925,6 +1926,8 @@ class Level implements ChunkManager, Metadatable{
 		if($hand->place($item, $block, $target, $face, $fx, $fy, $fz, $player) === false){
 			return false;
 		}
+
+		$this->addSound(new BlockPlaceSound($this->getBlock($block)));
 
 		if($hand->getId() === Item::SIGN_POST or $hand->getId() === Item::WALL_SIGN){
 
