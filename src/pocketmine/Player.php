@@ -1232,7 +1232,6 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 		}
 
 		$this->sleeping = clone $pos;
-		$this->teleport(new Position($pos->x + 0.5, $pos->y - 1, $pos->z + 0.5, $this->level));
 
 		$this->setDataProperty(self::DATA_PLAYER_BED_POSITION, self::DATA_TYPE_POS, [$pos->x, $pos->y, $pos->z]);
 		$this->setDataFlag(self::DATA_PLAYER_FLAGS, self::DATA_PLAYER_FLAG_SLEEP, true);
@@ -1918,7 +1917,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 					}
 				}
 			}
-			$this->processMovement($tickDiff);
+			if(!$this->isSleeping()){
+				$this->processMovement($tickDiff);
+			}
 
 			if(!$this->isSpectator()) $this->entityBaseTick($tickDiff);
 
@@ -4255,10 +4256,11 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	 * @param Vector3|Position|Location $pos
 	 * @param float                     $yaw
 	 * @param float                     $pitch
+	 * @param bool                      $closeWindows
 	 *
 	 * @return bool
 	 */
-	public function teleport(Vector3 $pos, $yaw = null, $pitch = null){
+	public function teleport(Vector3 $pos, $yaw = null, $pitch = null, $closeWindows = true){
 		if(!$this->isOnline()){
 			return false;
 		}
@@ -4270,7 +4272,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				if($window === $this->inventory){
 					continue;
 				}
-				$this->removeWindow($window);
+				if($closeWindows) $this->removeWindow($window);
 			}
 
 			$this->teleportPosition = new Vector3($this->x, $this->y, $this->z);
@@ -4285,6 +4287,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 			$this->resetFallDistance();
 			$this->nextChunkOrderRun = 0;
 			$this->newPosition = null;
+			$this->stopSleep();
 			return true;
 		}
 		return false;
@@ -4297,15 +4300,16 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	 * @param Vector3 $pos
 	 * @param float   $yaw
 	 * @param float   $pitch
+	 * @param bool    $closeWindows
 	 */
-	public function teleportImmediate(Vector3 $pos, $yaw = null, $pitch = null){
+	public function teleportImmediate(Vector3 $pos, $yaw = null, $pitch = null, $closeWindows = true){
 		if(parent::teleport($pos, $yaw, $pitch)){
 
 			foreach($this->windowIndex as $window){
 				if($window === $this->inventory){
 					continue;
 				}
-				$this->removeWindow($window);
+				if($closeWindows) $this->removeWindow($window);
 			}
 
 			$this->forceMovement = new Vector3($this->x, $this->y, $this->z);

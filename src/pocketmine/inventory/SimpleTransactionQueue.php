@@ -67,6 +67,15 @@ class SimpleTransactionQueue implements TransactionQueue{
 	 */
 	public function getTransactions(){
 		return $this->transactionQueue;
+	
+	/*
+	 * @return Inventory[]
+	 */
+	public function getInventories(){
+		$invs = [];
+		foreach($this->transactionQueue as $transaction)
+			if($transaction->getInventory() instanceof Inventory) $invs[] = $transaction->getInventory();
+		return $invs;
 	}
 
 	/**
