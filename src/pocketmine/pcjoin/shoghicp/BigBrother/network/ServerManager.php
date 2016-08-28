@@ -15,10 +15,10 @@
  * GNU General Public License for more details.
 */
 
-namespace shoghicp\BigBrother\network;
+namespace pocketmine\pcjoin\shoghicp\BigBrother\network;
 
 use pocketmine\utils\TextFormat;
-use shoghicp\BigBrother\utils\Binary;
+use pocketmine\pcjoin\shoghicp\BigBrother\utils\Binary;
 
 class ServerManager{
 
