@@ -1,6 +1,6 @@
 <?php 
 
-namespace shoghicp\BigBrother;
+namespace pocketmine\pcjoin\shoghicp\BigBrother;
 
 use pocketmine\Player;
 use pocketmine\level\Level;
