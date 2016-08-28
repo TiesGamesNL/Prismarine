@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
 */
 
-namespace shoghicp\BigBrother\network;
+namespace pocketmine\pcjoin\shoghicp\BigBrother\network;
 
 use pocketmine\Thread;
 
