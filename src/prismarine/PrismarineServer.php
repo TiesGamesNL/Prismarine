@@ -6,8 +6,7 @@
 
 namespace prismarine;
 
-class PrismarineServer {
-}
+class PrismarineServer
 
 use pocketmine\network\NetWork;
 
