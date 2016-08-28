@@ -73,7 +73,7 @@ class ProxyPC extends NetWork{
 
 		$port = (int) $this->getConfig()->get("port");
 		if($port === $this->getServer()->getPort()){
-			$this->getLogger()->error("In Config.yml edit Port");
+			$this->getLogger()->error("Edit the port in config.yml, it is identical to your server");
 			return;
 		}
 
