@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
 */
 
-namespace shoghicp\BigBrother\network;
+namespace pocketmine\pcjoin\shoghicp\BigBrother\network;
 use pocketmine\item\Item;
 use shoghicp\BigBrother\utils\Binary;
 abstract class Packet extends \stdClass{
