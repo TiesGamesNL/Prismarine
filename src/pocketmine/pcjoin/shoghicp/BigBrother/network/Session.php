@@ -15,13 +15,13 @@
  * GNU General Public License for more details.
 */
 
-namespace shoghicp\BigBrother\network;
+namespace pocketmine\pcjoin\shoghicp\BigBrother\network;
 
 use pocketmine\utils\TextFormat;
-use shoghicp\BigBrother\network\protocol\LoginDisconnectPacket;
-use shoghicp\BigBrother\network\protocol\PingPacket;
-use shoghicp\BigBrother\utils\AES;
-use shoghicp\BigBrother\utils\Binary;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\LoginDisconnectPacket;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\PingPacket;
+use pocketmine\pcjoin\shoghicp\BigBrother\utils\AES;
+use pocketmine\pcjoin\shoghicp\BigBrother\utils\Binary;
 
 class Session{
 	/** @var ServerManager */
