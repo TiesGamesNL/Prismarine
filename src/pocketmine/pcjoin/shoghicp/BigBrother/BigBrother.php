@@ -15,21 +15,21 @@
  * GNU General Public License for more details.
 */
 
-namespace shoghicp\BigBrother;
+namespace pocketmine\pcjoin\shoghicp\BigBrother;
 
-use phpseclib\Crypt\RSA;
+use pocketmine\pcjoin\phpseclib\Crypt\RSA;
 use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\event\player\PlayerPreLoginEvent;
-use shoghicp\BigBrother\network\protocol\RespawnPacket;
-use shoghicp\BigBrother\network\translation\Translator;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\RespawnPacket;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\translation\Translator;
 use pocketmine\event\Listener;
 use pocketmine\network\protocol\Info;
-use pocketmine\plugin\PluginBase;
-use shoghicp\BigBrother\network\Info as MCInfo;
-use shoghicp\BigBrother\network\ProtocolInterface;
-use shoghicp\BigBrother\network\ServerThread;
-use shoghicp\BigBrother\network\translation\TranslatorProtocol;
-use shoghicp\BigBrother\tasks\GeneratePrivateKey;
+use pocketmine\pcjoin\pocketmine\plugin\PluginBase;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\Info as MCInfo;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\ProtocolInterface;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\ServerThread;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\translation\TranslatorProtocol;
+use pocketmine\pcjoin\shoghicp\BigBrother\tasks\GeneratePrivateKey;
 
 class BigBrother extends PluginBase implements Listener{
 
