@@ -15,27 +15,27 @@
  * GNU General Public License for more details.
 */
 
-namespace shoghicp\BigBrother\network;
+namespace pocketmine\pcjoin\shoghicp\BigBrother\network;
 
 use pocketmine\network\protocol\DataPacket;
 use pocketmine\network\SourceInterface;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
-use shoghicp\BigBrother\BigBrother;
-use shoghicp\BigBrother\DesktopPlayer;
-use shoghicp\BigBrother\network\protocol\ClientStatusPacket;
-use shoghicp\BigBrother\network\protocol\CTSChatPacket;
-use shoghicp\BigBrother\network\protocol\CTSCloseWindowPacket;
-use shoghicp\BigBrother\network\protocol\EncryptionResponsePacket;
-use shoghicp\BigBrother\network\protocol\LoginStartPacket;
-use shoghicp\BigBrother\network\protocol\PlayerBlockPlacementPacket;
-use shoghicp\BigBrother\network\protocol\PlayerDiggingPacket;
-use shoghicp\BigBrother\network\protocol\PlayerLookPacket;
-use shoghicp\BigBrother\network\protocol\PlayerPositionAndLookPacket;
-use shoghicp\BigBrother\network\protocol\PlayerPositionPacket;
-use shoghicp\BigBrother\network\protocol\UseEntityPacket;
-use shoghicp\BigBrother\network\translation\Translator;
-use shoghicp\BigBrother\utils\Binary;
+use pocketmine\pcjoin\shoghicp\BigBrother\BigBrother;
+use pocketmine\pcjoin\pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\DesktopPlayer;
+use pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\ClientStatusPacket;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\CTSChatPacket;
+use pocketmine\pcjoin\spocketmine\pcjoin\hoghicp\BigBrother\network\protocol\CTSCloseWindowPacket;
+use pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\EncryptionResponsePacket;
+use pocketmine\pcjoin\pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\LoginStartPacket;
+use pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\PlayerBlockPlacementPacket;
+use pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\PlayerDiggingPacket;
+use pocketmine\pcjoin\pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\PlayerLookPacket;
+use pocketmine\pcjoin\pocketmine\pcjoin\pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\PlayerPositionAndLookPacket;
+use pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\PlayerPositionPacket;
+use pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\network\protocol\UseEntityPacket;
+use pocketmine\pcjoin\pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\network\translation\Translator;
+use pocketmine\pcjoin\pocketmine\pcjoin\pocketmine\pcjoin\pocketmine\pcjoin\shoghicp\BigBrother\utils\Binary;
 
 class ProtocolInterface implements SourceInterface{
 
