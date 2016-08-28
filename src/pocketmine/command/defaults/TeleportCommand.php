@@ -67,9 +67,14 @@ class TeleportCommand extends VanillaCommand{
 				}
 			}
 		}
-
+		
 		if(count($args) < 3){
-			$origin->teleport($target);
+			if($origin->getLevel()->getDimension() === $target->getDimension()){
+				$origin->teleport($target);
+			} else {
+				$sender->sendMessage("Teleportation is impossible, because players are in different dimensions.");
+				return true;
+			}
 			Command::broadcastCommandMessage($sender, new TranslationContainer("commands.tp.success", [$origin->getName(), $target->getName()]));
 
 			return true;
