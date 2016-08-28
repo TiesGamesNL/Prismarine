@@ -28,7 +28,7 @@ if exist Prismarine*.phar (
     if exist src\pocketmine\PocketMine.php (
         set POCKETMINE_FILE=src\pocketmine\PocketMine.php
     ) else (
-        echo "Couldn't find a valid Apollo installation"
+        echo "Couldn't find a valid Prismarine installation"
         pause
         exit 1
     )
