@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
 */
 
-namespace shoghicp\BigBrother;
+namespace pocketmine\pcjoin\shoghicp\BigBrother;
 
 use pocketmine\event\Timings;
 use pocketmine\event\player\PlayerJoinEvent;
