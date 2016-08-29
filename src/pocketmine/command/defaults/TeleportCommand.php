@@ -7,7 +7,6 @@ use pocketmine\event\TranslationContainer;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
-use pocketmine\level\Level;
 
 class TeleportCommand extends VanillaCommand{
 
@@ -70,7 +69,7 @@ class TeleportCommand extends VanillaCommand{
 		}
 		
 		if(count($args) < 3){
-			if($origin->getLevel()->getDimension() === $target->getDimension()){
+			if($origin->getLevel()->getDimension() === $target->getLevel()->getDimension()){
 				$origin->teleport($target);
 			} else {
 				$sender->sendMessage("Teleportation is impossible, because players are in different dimensions.");
