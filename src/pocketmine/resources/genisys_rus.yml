@@ -103,7 +103,7 @@ synapse:
  enabled: false
  server-ip: 127.0.0.1
  server-port: 10305
- #Включить, если этот сервер главный(хаб/.
+ #Включить, если этот сервер главный(хаб).
  is-main-server: true
  server-password: 16bitlongkey
  #Описание - идентификатор сервера
