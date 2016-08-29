@@ -1,4 +1,4 @@
-Prismarine
+![Prismarine](https://avatars0.githubusercontent.com/u/15969613?v=3&s=200) Prismarine
 ===================
 
 __Feature-rich server software for Minecraft: Pocket Edition & Windows 10 Edition Beta__
@@ -21,7 +21,7 @@ If you have an issue, please write it to us, we will help you or fix the bug.
 
 Get Prismarine
 -------------
-* PHAR: [Download](https://github.com/PrismarineMC/Prismarine/releases)
+* PHAR: [Download](http://193.124.185.24/get_prismarine.php)
 * Source: [Download](https://github.com/PrismarineMC/Prismarine/archive/master.zip)
 
 NOTE: **The master branch is the only officially supported branch.**
