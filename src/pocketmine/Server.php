@@ -126,6 +126,7 @@ use pocketmine\network\Network;
 use pocketmine\network\protocol\BatchPacket;
 use pocketmine\network\protocol\CraftingDataPacket;
 use pocketmine\network\protocol\DataPacket;
+use pocketmine\network\protocol\NewBatchPacket;
 use pocketmine\network\protocol\PlayerListPacket;
 use pocketmine\network\query\QueryHandler;
 use pocketmine\network\RakLibInterface;
@@ -2290,7 +2291,14 @@ class Server{
 
 		foreach($identifiers as $i){
 			if(isset($this->players[$i])){
-				$this->players[$i]->dataPacket($pk);
+				if($this->players[$i]->getProtocol() >= 90){
+					$packet = new NewBatchPacket();
+					$packet->payload = $pk->payload;
+					$packet->encode();
+					$this->players[$i]->dataPacket($packet);
+				} else {
+					$this->players[$i]->dataPacket($pk);
+				}
 			}
 		}
 	}
