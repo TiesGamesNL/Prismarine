@@ -30,7 +30,7 @@ interface Info{
 	/**
 	 * Actual Minecraft: PE protocol version
 	 */
-	const CURRENT_PROTOCOL = 90:
+	const CURRENT_PROTOCOL = 90;
 	const ACCEPTED_PROTOCOLS = [81, 82, 90]; //Accept older protocols :)
 
 	const LOGIN_PACKET = 0x01;
