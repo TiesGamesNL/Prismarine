@@ -42,18 +42,12 @@ class LoginPacket extends DataPacket{
 
 	public function decode(){
 		$this->protocol = $this->getInt();
-
-		switch($this->protocol){
-			case 81:
-			case 82:
-				$str = zlib_decode($this->get($this->getInt()), 1024 * 1024 * 64);
-				break;
-			case 90:
-				$str = zlib_decode($this->get($this->getShort()), 1024 * 1024 * 64);
-				break;
-			default: //Not accepted protocol, skipping
-				return;
+		if($this->protocol >= 90){
+			return;
 		}
+
+		$str = zlib_decode($this->get($this->getInt()), 1024 * 1024 * 64);
+
 		$this->setBuffer($str, 0);
 
 		$time = time();

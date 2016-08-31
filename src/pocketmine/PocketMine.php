@@ -75,8 +75,8 @@ namespace pocketmine {
 	const VERSION = "1.8.1";
 	const API_VERSION = "2.1.0";
 	const CODENAME = "Cake";
-	const MINECRAFT_VERSION = "v0.15.90 alpha";
-	const MINECRAFT_VERSION_NETWORK = "0.15.90";
+	const MINECRAFT_VERSION = "v0.15.6 alpha";
+	const MINECRAFT_VERSION_NETWORK = "0.15.6";
 
 	/*
 	 * Startup code. Do not look at it, it may harm you.
