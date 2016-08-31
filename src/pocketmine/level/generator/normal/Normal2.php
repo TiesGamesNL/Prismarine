@@ -1,22 +1,7 @@
 <?php
 
 /*
- *
- *  _____   _____   __   _   _   _____  __    __  _____
- * /  ___| | ____| |  \ | | | | /  ___/ \ \  / / /  ___/
- * | |     | |__   |   \| | | | | |___   \ \/ /  | |___
- * | |  _  |  __|  | |\   | | | \___  \   \  /   \___  \
- * | |_| | | |___  | | \  | | |  ___| |   / /     ___| |
- * \_____/ |_____| |_|  \_| |_| /_____/  /_/     /_____/
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * @author iTX Technologies
- * @link https://itxtech.org
- *
+Principal generator. Please use this generator.
  */
 
 namespace pocketmine\level\generator\normal;
@@ -57,7 +42,7 @@ class Normal2 extends Normal{
 
 	private $heightOffset;
 
-	private $seaHeight = 62;
+	private $seaHeight = 64;
 	private $seaFloorHeight = 48;
 	private $beathStartHeight = 60;
 	private $beathStopHeight = 64;
@@ -95,41 +80,8 @@ class Normal2 extends Normal{
 		$this->noiseBaseGround = new Simplex($this->random, 4, 1 / 4, 1 / 64);
 		$this->noiseRiver = new Simplex($this->random, 2, 1, 1 / 512);
 		$this->random->setSeed($this->level->getSeed());
-		$this->selector = new BiomeSelector($this->random, function($temperature, $rainfall){
-			if($rainfall < 0.25){
-				if($temperature < 0.7){
-					return Biome::OCEAN;
-				}elseif($temperature < 0.85){
-					return Biome::RIVER;
-				}else{
-					return Biome::SWAMP;
-				}
-			}elseif($rainfall < 0.60){
-				if($temperature < 0.25){
-					return Biome::ICE_PLAINS;
-				}elseif($temperature < 0.75){
-					return Biome::PLAINS;
-				}else{
-					return Biome::DESERT;
-				}
-			}elseif($rainfall < 0.80){
-				if($temperature < 0.25){
-					return Biome::TAIGA;
-				}elseif($temperature < 0.75){
-					return Biome::FOREST;
-				}else{
-					return Biome::BIRCH_FOREST;
-				}
-			}else{
-				if($temperature < 0.25){
-					return Biome::MOUNTAINS;
-				}elseif($temperature < 0.70){
-					return Biome::SMALL_MOUNTAINS;
-				}else{
-					return Biome::RIVER;
-				}
-			}
-		}, Biome::getBiome(Biome::OCEAN));
+		
+		$this->selector = new BiomeSelector($this->random, Biome::getBiome(Biome::OCEAN));
 
 		$this->heightOffset = $random->nextRange(-5, 3);
 
@@ -144,11 +96,18 @@ class Normal2 extends Normal{
 		$this->selector->addBiome(Biome::getBiome(Biome::ICE_PLAINS));
 		$this->selector->addBiome(Biome::getBiome(Biome::SMALL_MOUNTAINS));
 		$this->selector->addBiome(Biome::getBiome(Biome::BIRCH_FOREST));
+		$this->selector->addBiome(Biome::getBiome(Biome::ROOFED_FOREST));
+		$this->selector->addBiome(Biome::getBiome(Biome::SAVANNA));
+		$this->selector->addBiome(Biome::getBiome(Biome::FROZEN_RIVER));
+		$this->selector->addBiome(Biome::getBiome(Biome::MUSHROOM_ISLAND));
+		$this->selector->addBiome(Biome::getBiome(Biome::BEACH));
+		$this->selector->addBiome(Biome::getBiome(Biome::JUNGLE));
+		$this->selector->addBiome(Biome::getBiome(Biome::MESA));
 
 		$this->selector->recalculate();
 
 		$cover = new GroundCover();
-		$this->generationPopulators[] = $cover;;
+		$this->generationPopulators[] = $cover;
 
 		$cave = new Cave();
 		$this->populators[] = $cave;
@@ -219,8 +178,7 @@ class Normal2 extends Normal{
 					}
 					$canRiver = false;
 				}else if($genyHeight <= $this->beathStopHeight && $genyHeight >= $this->beathStartHeight){
-					//todo: there is no beach biome, use desert temporarily
-					$biome = Biome::getBiome(Biome::DESERT);
+					$biome = Biome::getBiome(Biome::BEACH);
 				}else{
 					$biome = $this->pickBiome($chunkX * 16 + $genx, $chunkZ * 16 + $genz);
 					if($canBaseGround){
