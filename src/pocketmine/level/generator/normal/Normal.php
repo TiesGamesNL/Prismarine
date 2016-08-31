@@ -42,10 +42,10 @@ use pocketmine\level\generator\biome\BiomeSelector;
 use pocketmine\level\generator\Generator;
 use pocketmine\level\generator\noise\Simplex;
 use pocketmine\level\generator\object\OreType;
-use pocketmine\level\generator\populator\Cave;
 use pocketmine\level\generator\populator\GroundCover;
 use pocketmine\level\generator\populator\Ore;
 use pocketmine\level\generator\populator\Populator;
+use pocketmine\level\generator\populator\Cave;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3 as Vector3;
 use pocketmine\utils\Random;
@@ -129,41 +129,8 @@ class Normal extends Generator{
 		$this->random->setSeed($this->level->getSeed());
 		$this->noiseBase = new Simplex($this->random, 4, 1 / 4, 1 / 32);
 		$this->random->setSeed($this->level->getSeed());
-		$this->selector = new BiomeSelector($this->random, function($temperature, $rainfall){
-			if($rainfall < 0.25){
-				if($temperature < 0.7){
-					return Biome::OCEAN;
-				}elseif($temperature < 0.85){
-					return Biome::RIVER;
-				}else{
-					return Biome::SWAMP;
-				}
-			}elseif($rainfall < 0.60){
-				if($temperature < 0.25){
-					return Biome::ICE_PLAINS;
-				}elseif($temperature < 0.75){
-					return Biome::PLAINS;
-				}else{
-					return Biome::DESERT;
-				}
-			}elseif($rainfall < 0.80){
-				if($temperature < 0.25){
-					return Biome::TAIGA;
-				}elseif($temperature < 0.75){
-					return Biome::FOREST;
-				}else{
-					return Biome::BIRCH_FOREST;
-				}
-			}else{
-				if($temperature < 0.25){
-					return Biome::MOUNTAINS;
-				}elseif($temperature < 0.70){
-					return Biome::SMALL_MOUNTAINS;
-				}else{
-					return Biome::RIVER;
-				}
-			}
-		}, Biome::getBiome(Biome::OCEAN));
+		
+		$this->selector = new BiomeSelector($this->random, Biome::getBiome(Biome::OCEAN));
 
 		$this->selector->addBiome(Biome::getBiome(Biome::OCEAN));
 		$this->selector->addBiome(Biome::getBiome(Biome::PLAINS));
@@ -176,12 +143,19 @@ class Normal extends Generator{
 		$this->selector->addBiome(Biome::getBiome(Biome::ICE_PLAINS));
 		$this->selector->addBiome(Biome::getBiome(Biome::SMALL_MOUNTAINS));
 		$this->selector->addBiome(Biome::getBiome(Biome::BIRCH_FOREST));
+		$this->selector->addBiome(Biome::getBiome(Biome::ROOFED_FOREST));
+		$this->selector->addBiome(Biome::getBiome(Biome::SAVANNA));
+		$this->selector->addBiome(Biome::getBiome(Biome::FROZEN_RIVER));
+		$this->selector->addBiome(Biome::getBiome(Biome::MUSHROOM_ISLAND));
+		$this->selector->addBiome(Biome::getBiome(Biome::BEACH));
+		$this->selector->addBiome(Biome::getBiome(Biome::JUNGLE));
+		$this->selector->addBiome(Biome::getBiome(Biome::MESA));
 
 		$this->selector->recalculate();
 
 		$cover = new GroundCover();
 		$this->generationPopulators[] = $cover;
-
+		
 		$cave = new Cave();
 		$this->populators[] = $cave;
 
