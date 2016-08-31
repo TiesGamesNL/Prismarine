@@ -60,7 +60,6 @@ use pocketmine\network\protocol\PlayStatusPacket;
 use pocketmine\network\protocol\TextPacket;
 use pocketmine\network\protocol\MoveEntityPacket;
 use pocketmine\network\protocol\MovePlayerPacket;
-use pocketmine\network\protocol\NewBatchPacket;
 use pocketmine\network\protocol\PlayerActionPacket;
 use pocketmine\network\protocol\MobArmorEquipmentPacket;
 use pocketmine\network\protocol\MobEquipmentPacket;
@@ -214,16 +213,7 @@ class Network {
 	}
 
 	public function processBatch(BatchPacket $packet, Player $p) {
-		if($p->getProtocol() >= 90){ //Use NewBatchPacket
-			$pk = clone $packet;
-			$pk->encode();
-			$nPk = new NewBatchPacket();
-			$nPk->setBuffer($pk->getBuffer(), 1);
-			$nPk->decode();
-			$str = zlib_decode($nPk->payload, 1024 * 1024 * 64); //Max 64MB
-		} else { //Use old batch
-			$str = zlib_decode($packet->payload, 1024 * 1024 * 64); //Max 64MB
-		}
+		$str = zlib_decode($packet->payload, 1024 * 1024 * 64); //Max 64MB
 		$len = strlen($str);
 		$offset = 0;
 		try {
