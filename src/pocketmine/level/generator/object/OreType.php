@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____  
@@ -18,14 +17,11 @@
  * 
  *
 */
-
 namespace pocketmine\level\generator\object;
-
 use pocketmine\block\Block;
-
-class OreType{
+use pocketmine\level\generator\object\Object;
+class OreType extends Object{
 	public $material, $clusterCount, $clusterSize, $maxHeight, $minHeight;
-
 	public function __construct(Block $material, $clusterCount, $clusterSize, $minHeight, $maxHeight){
 		$this->material = $material;
 		$this->clusterCount = (int) $clusterCount;
