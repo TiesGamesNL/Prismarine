@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____  
@@ -18,27 +17,21 @@
  * 
  *
 */
-
 namespace pocketmine\level\generator\populator;
-
 use pocketmine\block\Block;
 use pocketmine\level\ChunkManager;
 use pocketmine\utils\Random;
-
 class Cactus extends Populator{
 	/** @var ChunkManager */
 	private $level;
 	private $randomAmount;
 	private $baseAmount;
-
 	public function setRandomAmount($amount){
 		$this->randomAmount = $amount;
 	}
-
 	public function setBaseAmount($amount){
 		$this->baseAmount = $amount;
 	}
-
 	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
 		$this->level = $level;
 		$amount = $random->nextRange(0, $this->randomAmount + 1) + $this->baseAmount;
@@ -48,7 +41,6 @@ class Cactus extends Populator{
 			$y = $this->getHighestWorkableBlock($x, $z);
 			$tallRand = $random->nextRange(0, 17);
 			$yMax = $y + 1 + (int) ($tallRand > 10) + (int) ($tallRand > 15);
-
 			if($y !== -1){
 				for(; $y < 127 and $y < $yMax; $y++){
 					if($this->canCactusStay($x, $y, $z)){
@@ -59,7 +51,6 @@ class Cactus extends Populator{
 			}
 		}
 	}
-
 	private function canCactusStay($x, $y, $z){
 		$b = $this->level->getBlockIdAt($x, $y, $z);
 		$below = $this->level->getBlockIdAt($x, $y - 1, $z);
@@ -68,7 +59,6 @@ class Cactus extends Populator{
 		}
 		return ($b === Block::AIR) and ($below === Block::SAND or $below === Block::CACTUS);
 	}
-
 	private function getHighestWorkableBlock($x, $z){
 		for($y = 127; $y >= 0; --$y){
 			$b = $this->level->getBlockIdAt($x, $y, $z);
@@ -76,7 +66,6 @@ class Cactus extends Populator{
 				break;
 			}
 		}
-
 		return $y === 0 ? -1 : ++$y;
 	}
 }
