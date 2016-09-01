@@ -1833,7 +1833,7 @@ class Server{
 				unset($this->propertyCache["settings.language"]);
 			}
 
-			$this->logger->debug("Loading the prismarine.yml...");
+			$this->logger->debug("Loading prismarine.yml...");
 
 			$lang = $this->getProperty("settings.language", BaseLang::FALLBACK_LANGUAGE);
 			if(file_exists($this->filePath . "src/pocketmine/resources/prismarine_$lang.yml")){
