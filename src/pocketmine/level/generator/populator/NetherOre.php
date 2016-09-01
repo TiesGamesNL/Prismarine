@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  _____   _____   __   _   _   _____  __    __  _____
@@ -18,16 +17,12 @@
  * @link https://itxtech.org
  *
  */
-
 namespace pocketmine\level\generator\populator;
-
 use pocketmine\level\ChunkManager;
 use pocketmine\level\generator\object\NetherOre as ObjectOre;
 use pocketmine\utils\Random;
-
 class NetherOre extends Populator{
 	private $oreTypes = [];
-
 	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
 		foreach($this->oreTypes as $type){
 			$ore = new ObjectOre($random, $type);
@@ -41,7 +36,6 @@ class NetherOre extends Populator{
 			}
 		}
 	}
-
 	public function setOreTypes(array $types){
 		$this->oreTypes = $types;
 	}
