@@ -1,4 +1,4 @@
-![Prismarine](https://avatars0.githubusercontent.com/u/15969613?v=3&s=200) Prismarine [![Travis-CI](https://travis-ci.org/PrismarineMC/Prismarine.svg?branch=master)](https://travis-ci.com/Prismarine/PrismarineMC) [![CircleCI](https://circleci.com/gh/PrismarineMC/Prismarine.svg?style=svg)](https://circleci.com/gh/PrismarineMC/Prismarine)
+![Prismarine](https://avatars0.githubusercontent.com/u/15969613?v=3&s=200) Prismarine [![Travis-CI](https://travis-ci.org/PrismarineMC/Prismarine.svg?branch=master)](https://travis-ci.org/Prismarine/PrismarineMC) [![CircleCI](https://circleci.com/gh/PrismarineMC/Prismarine.svg?style=svg)](https://circleci.com/gh/PrismarineMC/Prismarine)
 ===================
 
 __Feature-rich server software for Minecraft: Pocket Edition & Windows 10 Edition Beta__
