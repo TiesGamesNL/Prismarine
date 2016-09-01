@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  _____   _____   __   _   _   _____  __    __  _____
@@ -18,49 +17,31 @@
  * @link https://itxtech.org
  *
  */
-
 namespace pocketmine\level\generator\populator;
-
 use pocketmine\block\Block;
 use pocketmine\level\ChunkManager;
 use pocketmine\utils\Random;
 use pocketmine\block\Flower as FlowerBlock;
-
-class Flower extends Populator{
+use pocketmine\level\generator\populator\VariableAmountPopulator;
+class Flower extends VariableAmountPopulator{
 	/** @var ChunkManager */
 	private $level;
-	private $randomAmount;
-	private $baseAmount = 8;
-
+	protected $baseAmount = 8;
 	private $flowerTypes = [];
-
-	public function setRandomAmount($amount){
-		$this->randomAmount = $amount;
-	}
-
-	public function setBaseAmount($amount){
-		$this->baseAmount = $amount;
-	}
-
 	public function addType($type){
 		$this->flowerTypes[] = $type;
 	}
-
 	public function getTypes(){
 		return $this->flowerTypes;
 	}
-
 	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
 		$this->level = $level;
-		$amount = $random->nextRange(0, $this->randomAmount + 1) + $this->baseAmount;
-
+		$amount = $this->getAmount($random);
 		if(count($this->flowerTypes) === 0){
 			$this->addType([Block::DANDELION, 0]);
 			$this->addType([Block::RED_FLOWER, FlowerBlock::TYPE_POPPY]);
 		}
-
 		$endNum = count($this->flowerTypes) - 1;
-
 		for($i = 0; $i < $amount; ++$i){
 			$x = $random->nextRange($chunkX * 16, $chunkX * 16 + 15);
 			$z = $random->nextRange($chunkZ * 16, $chunkZ * 16 + 15);
@@ -72,12 +53,10 @@ class Flower extends Populator{
 			}
 		}
 	}
-
 	private function canFlowerStay($x, $y, $z){
 		$b = $this->level->getBlockIdAt($x, $y, $z);
 		return ($b === Block::AIR or $b === Block::SNOW_LAYER) and $this->level->getBlockIdAt($x, $y - 1, $z) === Block::GRASS;
 	}
-
 	private function getHighestWorkableBlock($x, $z){
 		for($y = 127; $y >= 0; --$y){
 			$b = $this->level->getBlockIdAt($x, $y, $z);
