@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____  
@@ -18,16 +17,12 @@
  * 
  *
 */
-
 namespace pocketmine\level\generator\populator;
-
 use pocketmine\level\ChunkManager;
 use pocketmine\level\generator\object\Ore as ObjectOre;
 use pocketmine\utils\Random;
-
 class Ore extends Populator{
 	private $oreTypes = [];
-
 	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
 		foreach($this->oreTypes as $type){
 			$ore = new ObjectOre($random, $type);
@@ -41,7 +36,6 @@ class Ore extends Populator{
 			}
 		}
 	}
-
 	public function setOreTypes(array $types){
 		$this->oreTypes = $types;
 	}
