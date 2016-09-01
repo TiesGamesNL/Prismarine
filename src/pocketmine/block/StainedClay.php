@@ -67,4 +67,10 @@ class StainedClay extends Solid{
 		];
 		return $names[$this->meta & 0x0f];
 	}
+	public function getDrops(Item $item) : array{
+		if($item->isPickaxe()){
+			return [Item::get($this->id, $this->meta, 1)];
+		}
+		return [];
+	}
 }
