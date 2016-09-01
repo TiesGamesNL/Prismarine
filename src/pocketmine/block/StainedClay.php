@@ -19,6 +19,7 @@
 */
 namespace pocketmine\block;
 use pocketmine\item\Tool;
+use pocketmine\item\Item;
 class StainedClay extends Solid{
 	protected $id = self::STAINED_CLAY;
 	const CLAY_WHITE = 0;
