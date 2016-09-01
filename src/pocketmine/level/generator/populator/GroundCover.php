@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____  
@@ -18,18 +17,14 @@
  * 
  *
 */
-
 namespace pocketmine\level\generator\populator;
-
 use pocketmine\block\Block;
 use pocketmine\level\ChunkManager;
 use pocketmine\level\generator\biome\Biome;
 use pocketmine\level\Level;
 use pocketmine\level\SimpleChunkManager;
 use pocketmine\utils\Random;
-
 class GroundCover extends Populator{
-
 	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
 		$chunk = $level->getChunk($chunkX, $chunkZ);
 		if($level instanceof Level or $level instanceof SimpleChunkManager){
@@ -44,7 +39,6 @@ class GroundCover extends Populator{
 					if(!$cover[0]->isSolid()){
 						$diffY = 1;
 					}
-
 					$column = $chunk->getBlockIdColumn($x, $z);
 					for($y = 127; $y > 0; --$y){
 						if($column{$y} !== "\x00" and !Block::get(ord($column{$y}))->isTransparent()){
