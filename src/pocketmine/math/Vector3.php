@@ -1,5 +1,6 @@
 <?php
 namespace pocketmine\math;
+use pocketmine\utils\Random;
 class Vector3{
 	const SIDE_DOWN = 0;
 	const SIDE_UP = 1;
