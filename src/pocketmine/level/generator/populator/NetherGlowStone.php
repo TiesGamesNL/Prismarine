@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  _____   _____   __   _   _   _____  __    __  _____
@@ -18,20 +17,15 @@
  * @link https://itxtech.org
  *
  */
-
 namespace pocketmine\level\generator\populator;
-
 use pocketmine\block\Glowstone;
 use pocketmine\level\ChunkManager;
 use pocketmine\level\generator\object\NetherOreTop as ObjectOre;
 use pocketmine\level\generator\object\OreType;
 use pocketmine\utils\Random;
-
 class NetherGlowStone extends Populator{
-
 	/** @var ChunkManager */
 	private $level;
-
 	public function populate(ChunkManager $level, $chunkX, $chunkZ, Random $random){
 		$this->level = $level;
 		$type = new OreType(new Glowstone(), 1, 20, 128, 10);
@@ -43,7 +37,6 @@ class NetherGlowStone extends Populator{
 			$ore->placeObject($level, $x, $y, $z);
 		}
 	}
-
 	private function getHighestWorkableBlock($x, $z){
 		for($y = 127; $y >= 0; --$y){
 			$b = $this->level->getBlockIdAt($x, $y, $z);
@@ -51,8 +44,6 @@ class NetherGlowStone extends Populator{
 				break;
 			}
 		}
-
 		return $y === 0 ? -1 : ++$y;
 	}
-
 }
