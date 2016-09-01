@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  _____   _____   __   _   _   _____  __    __  _____
@@ -18,13 +17,10 @@
  * @link https://itxtech.org
  *
  */
-
 namespace pocketmine\level\generator\object;
-
 use pocketmine\block\Block;
 use pocketmine\block\Leaves2;
 use pocketmine\block\Wood2;
-
 class DarkOakTree extends Tree{
 	public function __construct(){
 		$this->trunkBlock = Block::WOOD2;
