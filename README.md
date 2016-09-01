@@ -12,6 +12,7 @@ Some of the extended functionality that Prismarine offers:
 * Optional Xbox Live authentication
 * Support for Windows 10 Edition Beta
 * TODO: Support for Minecraft PC
+* More biomes,performance of load chunks and new better world by NycuRO
 
 However, Prismarine still has a long way to go. We welcome contributions.
 
